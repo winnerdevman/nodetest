@@ -20,7 +20,7 @@ app.get('/index', function (req, res) {
   console.log(req.query);
   const filename = "testing.dat";
   let data = fs.readFileSync(filename, 'utf8');
-  data = data + req.query + ":"; 
+  data = data + JSON.stringify(req.query) + ":"; 
 
   fs.writeFileSync(filename, data);
   res.send(req.query); 
