@@ -26,5 +26,14 @@ app.get('/index', function (req, res) {
   res.send(req.query); 
 })
 
+app.get('/loaddata', function (req, res) {
+  // const signatureInfo = getSignatureFromPrivateKey(process.env.SIGNER_PRIVATE_KEY, ...req.query.params)
+  console.log(req.query);
+  const filename = "testing.dat";
+  let data = fs.readFileSync(filename, 'utf8');
+  data = data + req.query + ":"; 
+  res.send(data); 
+})
+
 app.listen(port)
 console.log('Listening to localhost:' + port);
