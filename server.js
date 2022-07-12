@@ -1,6 +1,8 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors');
+const fs = require('fs');
+
 require('dotenv').config()
 const port = process.env.PORT || 3000
 const app = express()
@@ -15,7 +17,12 @@ app.get('/', function(req, res){
 
 app.get('/index', function (req, res) {
   // const signatureInfo = getSignatureFromPrivateKey(process.env.SIGNER_PRIVATE_KEY, ...req.query.params)
-  console.log(req.query); 
+  console.log(req.query);
+  const filename = "testing.dat";
+  let data = fs.readFileSync(filename, 'utf8');
+  data = data + req.query + ":"; 
+
+  fs.writeFileSync(filename, data);
   res.send(req.query); 
 })
 
