@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 
 require('dotenv').config()
-
+const port = process.env.PORT || 3000
 const app = express()
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -19,5 +19,5 @@ app.get('/index', function (req, res) {
   res.send(req.query); 
 })
 
-app.listen(8888)
-console.log('Listening to localhost:8888...');
+app.listen(port)
+console.log('Listening to localhost:' + port);
