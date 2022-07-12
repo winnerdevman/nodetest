@@ -9,6 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+app.get('/', function(req, res){
+	res.send("Hello");
+})
+
 app.get('/index', function (req, res) {
   // const signatureInfo = getSignatureFromPrivateKey(process.env.SIGNER_PRIVATE_KEY, ...req.query.params)
   console.log(req.query); 
